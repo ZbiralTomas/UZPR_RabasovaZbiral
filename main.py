@@ -4,10 +4,10 @@ import json
 # Definování proměnných
 url_50 = "https://geoportal.cuzk.cz/ZAKAZKY/Data50/epsg-5514/data50.zip"
 url_250 = 'https://geoportal.cuzk.cz/ZAKAZKY/Data250/epsg-5514/data250.zip'
-data_50_fname = 'Data50_S-JTSK.zip'
-data_250_fname = 'Data250_JTSK.zip'
-data_50_basename = os.path.splitext(data_50_fname)[0]
-data_250_basename = os.path.splitext(data_250_fname)[0]
+data_50_fname = 'data/zip_files/Data50_S-JTSK.zip'
+data_250_fname = 'data/zip_files/Data250_S-JTSK.zip'
+data_50_dir = os.path.splitext(data_50_fname)[0]
+data_250_dir = os.path.splitext(data_250_fname)[0]
 
 # Stažení dat z ČUZK
 if not os.path.exists(data_50_fname):
@@ -21,7 +21,7 @@ ExtractData(data_50_fname)
 ExtractData(data_250_fname)
 
 # Načtení dat chráněných území - odstranění duplikátů a vyřešení stejných jmen NP a chko
-chu_gdf = gpd.read_file(os.path.join(data_50_basename, "ChraneneUzemi.shp"))
+chu_gdf = gpd.read_file(os.path.join(data_50_dir, "ChraneneUzemi.shp"))
 chu_gdf_agg = chu_gdf.dissolve(by=["NAZEV", "KATEGCHU"], aggfunc="first")
 
 # Rozdělení na CHKO a NP
@@ -29,10 +29,10 @@ chko = chu_gdf_agg[chu_gdf_agg.index.get_level_values("KATEGCHU") == "CHKO"]
 nar_p = chu_gdf_agg[chu_gdf_agg.index.get_level_values("KATEGCHU") == "NP"]
 
 # Načtení hranic krajů
-kraje_gdf = gpd.read_file(os.path.join(data_250_basename, "PolbndRegDA.shp"))
+kraje_gdf = gpd.read_file(os.path.join(data_250_dir, "PolbndRegDA.shp"))
 
 # Načtení adresářů z json file
-with open("dictionaries.json", "r", encoding="utf-8") as file:
+with open("data/json_files/dictionaries.json", "r", encoding="utf-8") as file:
     data = json.load(file)
 
 # Extrakce jednotlivých dat

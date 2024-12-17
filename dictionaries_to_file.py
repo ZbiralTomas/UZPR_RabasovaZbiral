@@ -1,4 +1,5 @@
 import json
+import os
 
 # Define your dictionaries
 data = {
@@ -86,6 +87,7 @@ data = {
     }
 }
 
+os.makedirs('data/json_files', exist_ok=True)
 # Save to a JSON file
-with open("dictionaries.json", "w", encoding="utf-8") as file:
+with open("data/json_files/dictionaries.json", "w", encoding="utf-8") as file:
     json.dump(data, file, ensure_ascii=False, indent=4)

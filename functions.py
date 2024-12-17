@@ -45,10 +45,10 @@ def DownloadDataFromURL(url, filename):
 
 # Extrahuje data, pokud již nejsou extrahována
 def ExtractData(zip_file):
-    basename = os.path.splitext(zip_file)[0]
-    if not os.path.exists(basename) or not os.listdir(basename):
+    dirname = os.path.splitext(zip_file)[0]
+    if not os.path.exists(dirname) or not os.listdir(dirname):
         with zipfile.ZipFile(zip_file, 'r') as zip_ref:
-            zip_ref.extractall(basename)
+            zip_ref.extractall(dirname)
 
 
 # Vypočte statistická data, pro vytváření grafů
@@ -93,7 +93,7 @@ def create_interactive_plots(chko, nar_p, kraje_gdf, nazvy, prispevky_procenta,
                              rozloha_v_krajich, hrady_dict, veze_dict,
                              prirodni_dict, shared_colors):
     # Načtení directories se statistickými daty, která nešli stáhnout
-    with open("dictionaries.json", "r", encoding="utf-8") as file:
+    with open("data/json_files/dictionaries.json", "r", encoding="utf-8") as file:
         data = json.load(file)
 
     NP_years = data["rok_zalozeni_NP"]
