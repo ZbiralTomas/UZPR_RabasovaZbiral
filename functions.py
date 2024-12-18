@@ -272,7 +272,7 @@ def create_interactive_plots(chko, nar_p, kraje_gdf, nazvy, prispevky_procenta,
         # Checkboxy pro výber grafů k zobrazení - tady se mi bohužel nepodařilo vyřešit aby se automaticky "odškrtli"
 
     checkbox_ax = plt.axes([0.65, 0.06, 0.25, 0.15])
-    check_labels = ["Příspěvek krajů k celkové\n rozloze chráněných území v ČR", "Show Bar Chart",
+    check_labels = ["Příspěvek krajů k celkové\n rozloze chráněných území v ČR", "Podíl chráněné plochy v jednotlivých krajích",
                     "Návštěvnost přírodních cílů v krajích"]
     checkbox = CheckButtons(checkbox_ax, labels=check_labels, actives=[True, False, False])
 
@@ -285,7 +285,7 @@ def create_interactive_plots(chko, nar_p, kraje_gdf, nazvy, prispevky_procenta,
         # Zobrazí zaškrtnutý graf
         if label == "Příspěvek krajů k celkové\n rozloze chráněných území v ČR":
             plot1_ax.set_visible(True)
-        elif label == "Show Bar Chart":
+        elif label == "Podíl chráněné plochy v jednotlivých krajích":
             plot2_ax.set_visible(True)
         elif label == "Návštěvnost přírodních cílů v krajích":
             plot3_ax.set_visible(True)
