@@ -24,7 +24,7 @@ This project visualizes National Parks (NP) and Protected Landscape Areas (CHKO)
    - Data files: `data50.zip` and `data250.zip`.
 
 2. **Dictionaries for Foundation Years**:
-   - Hand-curated foundation years for NP and CHKO stored in Python dictionaries.
+   - Hand-curated foundation years for NP and CHKO stored in Python dictionaries retrieved from [CzechTourism report](https://tourdata.cz/data/navstevnost-turistickych-cilu-2023/).
 
 ---
 
