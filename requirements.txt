@@ -6,3 +6,4 @@ shapely>=1.7.1
 fiona>=1.8.20
 pyproj>=3.0.0
 rtree>=0.9.7
+requests>=2.0.0
