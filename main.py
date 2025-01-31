@@ -11,9 +11,11 @@ data_250_dir = os.path.splitext(data_250_fname)[0]
 
 # Stažení dat z ČUZK
 if not os.path.exists(data_50_fname):
+    os.makedirs(data_50_fname)
     DownloadDataFromURL(url_50, data_50_fname)
 
 if not os.path.exists(data_250_fname):
+    os.makedirs(data_250_fname)
     DownloadDataFromURL(url_250, data_250_fname)
 
 # Extrakce dat (pouze pokud ještě nejsou extrahovaná)
